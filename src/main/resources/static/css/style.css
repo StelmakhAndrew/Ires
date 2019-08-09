@@ -1,25 +1,11 @@
-/*.mycontainer {*/
-/*    display: flex;*/
-/*    flex-grow: 1;*/
-/*}*/
-
-/*.inner-container {*/
-/*    text-align: center;*/
-/*    display: table;*/
-/*    background: #fff;*/
-/*    border: 1px solid #d8dee2;*/
-/*    margin: 10% auto 0;*/
-/*    border-radius: 10px;*/
-/*    padding: 20px;*/
-/*}*/
-
 .docs{
-    width: 300px;
+
     border: 1px solid #aeaeae;
     border-radius: 20px;
     padding: 15px 25px;
     background-color: white;
     margin-top: 10px;
+    width: max-content;
 }
 
 *{
@@ -95,4 +81,28 @@
     .container {
         max-width: 540px;
     }
+}
+dialog{
+    background: rgba(255, 255, 255,255);
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.historyElement{
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+    border-bottom-style: double;
+    margin-top: 5px;
+    display:flex;
+}
+.result{
+    height:30px; display: inline;
+}
+.palindrome{
+    margin-left:20px; display: block; overflow-x: auto;
+}
+
+.dialogLabel{
+    display: block; overflow-x: auto;
 }

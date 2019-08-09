@@ -1,0 +1,89 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/style.css}">
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="http://cdn.jsdelivr.net/webjars/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <title>Test Task</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div>
+    <dialog>
+        <p>Please, wait for calculation</p>
+    </dialog>
+</div>
+
+<div>
+    <div>
+        <div class="docs">
+            <form action="/" th:object="${palindrome}" method="POST"
+                  enctype="multipart/form-data">
+                <div>
+                    <h5>Number</h5>
+                    <input type="text" th:field="*{palindromeValue}"/>
+                    <p th:if="${#fields.hasErrors('palindromeValue')}" th:errors="*{palindromeValue}">palindromeValue Error</p>
+                </div>
+                <div>
+                    <h5 style="margin-top: 10px">Number of palindromes</h5>
+                    <input  type="text" th:field="*{count}" id="count"
+                           name="count"/>
+                    <p th:if="${#fields.hasErrors('count')}" th:errors="*{count}">count Error</p>
+
+                </div>
+                <div style="margin-top: 50px">
+                    <button id="submit" type="submit">Find</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="docs">
+        <div>HISTORY</div>
+        <th:block th:each="palindrome : ${allPalindromes}">
+            <div class="historyElement">
+                <button class="result" type="button">Result</button>
+
+                <p class="palindrome"
+                   th:text="${palindrome.getPalindromeValue()}"></p>
+
+                <dialog style="width: 800px;">
+                        <label class="dialogLabel"
+                               th:text="'Palindrome = '+ ${palindrome.getPalindromeValue()}"></label>
+                        <label class="dialogLabel"
+                               th:text="'MIN Palindrome ='+ ${palindrome.getMin()}"></label>
+                        <label class="dialogLabel"
+                               th:text="'MAX Palindrome ='+${palindrome.getMax()}"></label>
+                </dialog>
+            </div>
+        </th:block>
+    </div>
+</div>
+<footer>
+    <script type="text/javascript">
+        var dialog = document.querySelector('dialog');
+        document.querySelector('#submit').onclick = function () {
+            dialog.show();
+        };
+
+        var res = document.getElementsByClassName('result');
+        Array.prototype.filter.call(res, function (res) {
+            res.onclick = function () {
+                if (this.parentElement.querySelector('dialog').open)
+                    this.parentElement.querySelector('dialog').close();
+                else
+                    this.parentElement.querySelector('dialog').show();
+            }
+        });
+    </script>
+</footer>
+</body>
+</html>
