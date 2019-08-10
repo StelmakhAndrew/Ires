@@ -1,7 +1,6 @@
 package project.com.Service.impl;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.com.Entity.Pair;
 import project.com.Entity.Palindrome;
@@ -13,8 +12,12 @@ import java.util.List;
 @Service
 public class PalindromeServiceImpl implements PalindromeService {
 
-    @Autowired
-    private PalindromeRepository palindromeRepository;
+
+    private final PalindromeRepository palindromeRepository;
+
+    public PalindromeServiceImpl(PalindromeRepository palindromeRepository) {
+        this.palindromeRepository = palindromeRepository;
+    }
 
     @Override
     public void findPalindromes(Palindrome palindrome) {
@@ -26,7 +29,7 @@ public class PalindromeServiceImpl implements PalindromeService {
 
     @Override
     public List<Palindrome> getAll() {
-        return palindromeRepository.getAll();
+        return palindromeRepository.findAll();
     }
 
     private static void generateNextPalindromeUtil(int[] intArrayOfNumber, int len) {
