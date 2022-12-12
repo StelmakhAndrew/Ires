@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+//
     @Value("${spring.h2.console.enabled:false}")
     private boolean h2ConsoleEnabled;
 
